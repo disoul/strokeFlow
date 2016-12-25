@@ -18,3 +18,32 @@
   left: 0;
   overflow: hidden;
 }
+
+#enter {
+  height: 30px;
+  width: 120px;
+  font-size: 17px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  background-color: #66ccff;
+  border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 100px);
+  cursor: pointer;
+  z-index: 1000;
+  &:hover {
+    background-color: #aabbff;
+  }
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#vec {
+  z-index: 100;
+}
