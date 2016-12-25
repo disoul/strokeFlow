@@ -6,7 +6,7 @@
  */
 
 import animation from './anime';
-import Utils from 'aliyun-map-utils';
+//import Utils from 'aliyun-map-utils';
 
 class Particle {
   constructor(w, h, life) {
@@ -37,6 +37,7 @@ export default class Flow {
   constructor(container, count) {
     this.container = container;
     this.init();
+    /*
     this.sprite = Utils.getSprite({
       'drawN': 1.15,
       'color': {
@@ -49,6 +50,7 @@ export default class Flow {
       'height': 10,
     });
     console.log(this.sprite);
+    */
     this.getParticles(count);
   }
 
