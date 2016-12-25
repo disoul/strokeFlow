@@ -1,19 +1,12 @@
-/**
-* @Author: disoul
-* @Date:   2016-12-22T22:59:08+08:00
-* @Last modified by:   disoul
-* @Last modified time: 2016-12-25T14:56:15+08:00
-*/
-
-
-
 /*
  * flow.js
  * Copyright (C) 2016 disoul <disoul@DiSouldeMacBook-Pro.local>
  *
  * Distributed under terms of the MIT license.
  */
+
 import animation from './anime';
+import Utils from 'aliyun-map-utils';
 
 class Particle {
   constructor(w, h, life) {
@@ -44,6 +37,18 @@ export default class Flow {
   constructor(container, count) {
     this.container = container;
     this.init();
+    this.sprite = Utils.getSprite({
+      'drawN': 1.15,
+      'color': {
+        'from': 'rgba(245,230,0,0.3)',
+        'to': 'rgba(245,245,0,0.04)',
+        'easing': 'Linear.None.1.7',
+        'space': 'rgb'
+      },
+      'width': 10,
+      'height': 10,
+    });
+    console.log(this.sprite);
     this.getParticles(count);
   }
 
@@ -95,8 +100,10 @@ export default class Flow {
     this.updateTempCanvas();
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.context.drawImage(this.tmpCanvas, 0, 0);
+    this.context.fillStyle = '#fff';
     this.particles.forEach(p => {
-      this.context.fillRect(p.x, p.y, 1, 1);
+      //this.context.drawImage(this.sprite, p.x, p.y);
+      this.context.fillRect(p.x, p.y, 2, 2);
       p.updateLife(this.getVec(p.x, p.y));
     })
   }

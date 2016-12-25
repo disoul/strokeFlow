@@ -24,7 +24,7 @@ canvas.height = container.clientHeight;
 let context = canvas.getContext('2d');
 
 var path = [];
-const maxPath = 20;
+const maxPath = 30;
 
 container.appendChild(canvas);
 
@@ -46,7 +46,7 @@ document.addEventListener('mouseup', () => {
   canvas.last = null;
   let start = Date.now();
   console.log(button);
-  if (path.length > maxPath) {
+  if (path.length - 1> maxPath) {
     let newPath = [];
     let ratio = path.length / maxPath;
 
@@ -55,20 +55,24 @@ document.addEventListener('mouseup', () => {
     }
     path = newPath;
   }
-  console.log(path);
 
-  path.forEach(p => {
+  // remove last path element
+  // can not get vector from last path
+  path.pop();
+
+  path.forEach((p, i) => {
+    console.log(p, i);
     updateField(p[0], p[1], 60);
   });
 
   console.log('done!', Date.now() - start);
   path = [];
+  context.clearRect(0, 0, canvas.width, canvas.height);
 });
 document.addEventListener('mousedown', () => {canvas.mouseState = 'down'});
 canvas.addEventListener('mousemove', (e) => {
   if (canvas.mouseState == 'down') {
-    if (canvas.last)
-    console.log(e.clientX - canvas.last[0], e.clientY - canvas.last[1]);
+    console.log(e.clientX, e.clientY, canvas.last);
     draw(e.clientX, e.clientY, canvas.last);
   }
 });
@@ -115,7 +119,7 @@ function updateField(x, y, range) {
         if (data[0] == undefined || data[2]) continue;
         vecData[base] = data[0] + vec[0];
         vecData[base + 1] = data[1] + vec[1];
-        vecData[base + 2] = false;
+        vecData[base + 2] = 0;
       }
     }
   }

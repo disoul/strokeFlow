@@ -28,5 +28,8 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-postcss": "^0.2.0",
     "rollup-watch": "^2.5.0"
+  },
+  "dependencies": {
+    "aliyun-map-utils": "^0.0.29"
   }
 }
