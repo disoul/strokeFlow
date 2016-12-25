@@ -15,7 +15,7 @@ document.write(
   ':35729/livereload.js?snipver=1"></script>'
 );
 
-let flow = new Flow(document.getElementById('container'), 10000);
+let flow = new Flow(document.getElementById('container'), 2000);
 
 document.getElementById('enter').addEventListener('click', e => {
   flow.render(vecData);

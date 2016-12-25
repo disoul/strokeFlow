@@ -6,7 +6,7 @@
  */
 
 import animation from './anime';
-//import Utils from 'aliyun-map-utils';
+import Utils from 'aliyun-map-utils';
 
 class Particle {
   constructor(w, h, life) {
@@ -37,20 +37,20 @@ export default class Flow {
   constructor(container, count) {
     this.container = container;
     this.init();
-    /*
     this.sprite = Utils.getSprite({
-      'drawN': 1.15,
-      'color': {
-        'from': 'rgba(245,230,0,0.3)',
-        'to': 'rgba(245,245,0,0.04)',
-        'easing': 'Linear.None.1.7',
-        'space': 'rgb'
-      },
       'width': 10,
       'height': 10,
+      'isContinue': false,
+      'drawN': 7.4,
+      'type': 'radian',
+      'color': {
+        'from': 'rgba(0,255,161,0.99)',
+        'to': 'rgba(0,150,255,0)',
+        'easing': 'Linear.None.1.7',
+        'space': 'rgb'
+      }
     });
-    console.log(this.sprite);
-    */
+
     this.getParticles(count);
   }
 
@@ -95,7 +95,7 @@ export default class Flow {
     let ctx = this.tmpCanvas.getContext('2d');
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     ctx.drawImage(this.canvas, 0, 0);
-    ctx.globalAlpha = 0.1;
+    ctx.globalAlpha = 0.9;
   }
 
   draw() {
@@ -104,8 +104,8 @@ export default class Flow {
     this.context.drawImage(this.tmpCanvas, 0, 0);
     this.context.fillStyle = '#fff';
     this.particles.forEach(p => {
-      //this.context.drawImage(this.sprite, p.x, p.y);
-      this.context.fillRect(p.x, p.y, 2, 2);
+      this.context.drawImage(this.sprite, p.x, p.y);
+      //this.context.fillRect(p.x, p.y, 2, 2);
       p.updateLife(this.getVec(p.x, p.y));
     })
   }
