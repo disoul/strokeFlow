@@ -7,4 +7,4 @@ dist
 *.swp*
 *.tmp*
 *.log*
-build
+main.min.js
