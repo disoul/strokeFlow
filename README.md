@@ -3,7 +3,6 @@
 ```
 npm install
 npm start
-cd ./build
 anywhere
 ```
 
